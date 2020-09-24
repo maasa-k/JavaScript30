@@ -11,9 +11,13 @@
         <div class="hand min-hand"></div>
         <div class="hand second-hand"></div>
       </div>
+
+      <div class="dig-clock"></div>
     </div>
 
     <style>
+      /* @import url("https://fonts.googleapis.com/css?family=Orbitron"); */
+
       html {
         background: #018ded url(https://unsplash.it/1500/1000?image=881&blur=5);
         background-size: cover;
@@ -29,6 +33,15 @@
         flex: 1;
         min-height: 100vh;
         align-items: center;
+      }
+
+      .dig-clock {
+        font-family: sans-serif;
+        color: #66ff99;
+        font-size: 56px;
+        text-align: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
       }
 
       .clock {
@@ -91,6 +104,8 @@
       }
 
       setInterval(setDate, 1000);
+
+      //Extra:
     </script>
   </body>
 </html>
