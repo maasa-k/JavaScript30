@@ -16,7 +16,7 @@
   context.strokeStyle = '#BADA55';
   context.lineJoin = 'round';
   context.lineCap = 'round';
-  context.lineWidth = '100';
+  context.lineWidth = '50';
 
   let isDrawing = false;
   let lastX = 0;
@@ -29,7 +29,7 @@
     console.log(e);
 
     context.strokeStyle = `hsl(${hue}, 100%, 50%`
-    context.globalCompositeOperation = 'multiply';
+    context.globalCompositeOperation = 'soft-light';
     context.beginPath();
     context.moveTo(lastX, lastY);
     context.lineTo(e.offsetX, e.offsetY);
