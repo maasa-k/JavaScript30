@@ -19,6 +19,7 @@
     <ul class="plates">
       <li>Loading Tapas...</li>
     </ul>
+    <input type="checkbox" class="check-all">Check All</input>
     <form class="add-items">
       <input type="text" name="item" placeholder="Item Name" required>
       <input type="submit" value="+ Add Item">
@@ -29,6 +30,7 @@
   const addItems = document.querySelector('.add-items');
   const itemsList = document.querySelector('.plates');
   const items = JSON.parse(localStorage.getItem('items')) || [];
+  const checkAll = document.querySelector('.check-all');
 
   function addItem(e) {
     e.preventDefault();
@@ -64,8 +66,19 @@
     populateList(items, itemsList);
   }
 
+  function checkAllBoxes(e) {
+    items.map(item => {
+      if (item.done === false) {
+        item.done = true;
+        localStorage.setItem('items', JSON.stringify(items));
+        populateList(items, itemsList);
+      }
+    })
+  }
+
   addItems.addEventListener('submit', addItem);
   itemsList.addEventListener('click', toggleDone);
+  checkAll.addEventListener('click', checkAllBoxes);
   populateList(items, itemsList);
 
 </script>
