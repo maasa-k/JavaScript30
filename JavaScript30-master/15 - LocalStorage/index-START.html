@@ -19,7 +19,8 @@
     <ul class="plates">
       <li>Loading Tapas...</li>
     </ul>
-    <input type="checkbox" class="check-all">Check All</input>
+    <button class="check-all">Check All</button>
+    <button class="clear-all">Clear All</button>
     <form class="add-items">
       <input type="text" name="item" placeholder="Item Name" required>
       <input type="submit" value="+ Add Item">
@@ -31,6 +32,7 @@
   const itemsList = document.querySelector('.plates');
   const items = JSON.parse(localStorage.getItem('items')) || [];
   const checkAll = document.querySelector('.check-all');
+  const clearAll = document.querySelector('.clear-all');
 
   function addItem(e) {
     e.preventDefault();
@@ -76,9 +78,20 @@
     })
   }
 
+  function clearAllBoxes(e) {
+    items.map(item => {
+      if (item.done === true) {
+        item.done = false;
+        localStorage.setItem('items', JSON.stringify(items));
+        populateList(items, itemsList);
+      }
+    })
+  }
+
   addItems.addEventListener('submit', addItem);
   itemsList.addEventListener('click', toggleDone);
   checkAll.addEventListener('click', checkAllBoxes);
+  clearAll.addEventListener('click', clearAllBoxes);
   populateList(items, itemsList);
 
 </script>
